@@ -1,0 +1,5 @@
+# Editor specific
+.vscode
+
+# MDBook specific
+out

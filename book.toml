@@ -1,0 +1,17 @@
+[book]
+title = "IPv8 Documentation"
+author = "Dany Sluijk"
+description = "Documentation to create your own implementation of IPv8."
+
+[build]
+build-dir = "out"
+create-missing = false
+
+[output.html]
+mathjax-support = true
+
+[output.html.playpen]
+editable = true
+
+[output.html.search]
+limit-results = 15
