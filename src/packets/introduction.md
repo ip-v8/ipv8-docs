@@ -1,4 +1,3 @@
-
 # Packets
 
 An ipv8 packet consists of a list of any of the following building blocks which will from now on be called atoms. Each one of them will be described here.
