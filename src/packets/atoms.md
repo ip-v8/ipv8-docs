@@ -41,4 +41,3 @@
   A packet can comprise a nested payload, which means another packet is sent as part of the current packet. This other packet must be a [serializable payload](../payloads/serialization.md). Nested payloads are packed similar to variable length packets where the first **2** bytes form the length of the payload and the bytes after are the payload itself. Note that the length of a nested payload has a hard limit of 65536 (2^16) bytes.
 
 
-
