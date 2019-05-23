@@ -7,10 +7,11 @@ It does not define the communities, but they are build on top of the protocol.
 
 The following terms are used:
 
-| Term      | Definition                                                    |
-| --------- | ------------------------------------------------------------- |
-| Packet    | A packet is a compleat message send over the network message. |
-| Transport | The underlying transport protocol.                            |
+| Term         | Definition                                    |
+| ------------ | --------------------------------------------- |
+| Packet       | A packet is a single message.                 |
+| Transmission | A bigger message which was wanted to be send. |
+| Transport    | The underlying transport protocol.            |
 
 ## Layering
 
