@@ -1,40 +1,12 @@
-# Wire protocol
+# Transmission layer
 
-This section describes the general wire protocol.
-It does not define the communities, but they are build on top of the protocol.
+This layer is responsible for the connection between two directly connected nodes.
+It has no knowledge of the global state and lives directly above the choosen transport layer.
 
-## Terminology
-
-The following terms are used:
-
-| Term         | Definition                                    |
-| ------------ | --------------------------------------------- |
-| Packet       | A packet is a single message.                 |
-| Transmission | A bigger message which was wanted to be send. |
-| Transport    | The underlying transport protocol.            |
-
-## Layering
-
-This protocol is set up to be layerd simulair to TCP/IP.
-This is done to simplify the model and create a seperation of concerns.
-The layers look like this, orderer from low to high:
-
-| #   | Layer     |
-| --- | --------- |
-| 1   | Routing   |
-| 0   | Transport |
-
-## 0: Transmission
-
-The transmission layer is responsible for transmitting packets beween two existing nodes.
-
-Magic byte
 Sequence
 Permanent
 type
 receiver
-
-Store-and-forward?
 
 ## ?????????
 
@@ -46,28 +18,12 @@ The the metadata part has a fixed length of `xxxx` bytes.
 It contains the following parts:
 
 - magic byte (4 byte, `0x20f57c03`)
-- ttl (5 bit)
-- start flag (1 bit)
-- reserved (2 bit)
-- communityid (2 byte)
-- messageid (1 byte)
-- sequence (1 byte)
-- totalpackets (1 byte)
+- reserved (3 bit)
 - data length (2 byte)
-- signature (9 byte, SHA512withECDSA)
+- data
+- signature (8 byte, ED25519)
 
-- magic byte (4 byte, `0x20f57c03`)
-- data length (2 byte)
-- ttl (5 bit)
-- start flag (1 bit)
-- evil flag (2 bit)
-- reserved (1 bit)
-- sequence (1 byte)
-
-big endian
-Evil bit?
 SYN/ACK?
-Checksum?
 
 ```
 | 4 bytes    | 4 bits  | 4 bits |
@@ -76,7 +32,7 @@ Checksum?
 +------------+---------+--------+
 ```
 
-# Magic byte
+## Magic byte
 
 This magic byte is four bytes long, and fixed at `0x20f57c03`.
 Any packet which don't start with this magic byte can safely be ignored.
@@ -92,14 +48,10 @@ Flags are processed as they come in, so the left most flag is flag 0.
 
 | Flag ID | Name                    |
 | ------- | ----------------------- |
-| 0       | End of packet           |
+| 0       | Reserved for futher use |
 | 1       | Reserved for futher use |
 | 2       | Reserved for futher use |
 | 3       | Reserved for futher use |
-
-### End of packet
-
-This flag is `true` if this is the last packet in a single transmission.
 
 ## TTL
 
@@ -108,3 +60,8 @@ Every message starts with a hop count between `1` and `15`.
 At each hop the TTL counter is reduced by `1`.
 A received packet should not be retransmitted if the TTL is `0` after substracting the counter.
 It should still be processed like a normal packet.
+
+## Underlying transport
+
+While UDP is recommended for this network, it is not limited to it.
+If you want you can also use other transport protocols like TCP, TLS, WS and any other type of socket connection.
