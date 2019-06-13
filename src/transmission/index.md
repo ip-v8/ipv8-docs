@@ -46,12 +46,14 @@ These flags help with parsing the packet, as not all packet have the same format
 In total there are 4 flags, but not all of them are in use.
 Flags are processed as they come in, so the left most flag is flag 0.
 
+```
 | Flag ID | Name                    |
 | ------- | ----------------------- |
 | 0       | Reserved for futher use |
 | 1       | Reserved for futher use |
 | 2       | Reserved for futher use |
 | 3       | Reserved for futher use |
+```
 
 ## TTL
 
