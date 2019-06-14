@@ -1,6 +1,28 @@
 # IPv8 documentation
 
-This book is intended as documentation of the IPv8 application.
-Each chapter should describe one part of the application, and that part only.
+## Abstraction
 
-This is not intended as a user guide, but as a reference for implementing the application in a chosen language.
+This book is made to explain the protocol behind the IPv8 application and protocol.
+
+## Layering
+
+The protocol is set up in a layered fasion,
+where every layer should be independent of the other.
+This is done to simplify the model and create a seperation of concerns.
+A simplified table is displayed below:
+
+```
++---+-----------------+
+| 5 | Community       |
++---+-----------------+
+| 4 | Security        |
++---+-----------------+
+| 3 | Routing         |
++---+-----------------+
+| 2 | Verification    |
++---+-----------------+
+| 1 | Transmission    |
++---+-----------------+
+```
+
+Every part will be explained separately in different chapters from low to high.
