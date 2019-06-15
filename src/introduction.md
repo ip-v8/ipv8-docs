@@ -3,6 +3,19 @@
 ## Abstraction
 
 This book is made to explain the protocol behind the IPv8 application and protocol.
+The protocol has a few key features, namely:
+
+- Unordered and connectionless, but reliable transmission
+- Message authenticity
+- Optional message encryption
+- Low hop count
+- No network flooding
+- Protection against falsified node ID's
+- Self repairing in case of node failure
+- Almost guaranteed message delivery
+- Protection agains malicious nodes
+- Offline message delivery
+- Route locality
 
 ## Layering
 
