@@ -2,6 +2,7 @@
 
 - [Introduction](./introduction.md)
 - [Security](./security.md)
+- [Trust](./trust.md)
 - [Layers](./layers.md)
   - [Transmission](./layers/transmission/index.md)
   - [Verification](./layers/verification/index.md)
