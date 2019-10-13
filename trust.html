@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Trust - IPv8 Documentation</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation to create your own implementation of IPv8.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><a href="security.html"><strong aria-hidden="true">2.</strong> Security</a></li><li><a href="trust.html" class="active"><strong aria-hidden="true">3.</strong> Trust</a></li><li><a href="layers.html"><strong aria-hidden="true">4.</strong> Layers</a></li><li><ol class="section"><li><a href="layers/transmission/index.html"><strong aria-hidden="true">4.1.</strong> Transmission</a></li><li><a href="layers/verification/index.html"><strong aria-hidden="true">4.2.</strong> Verification</a></li><li><a href="layers/routing/index.html"><strong aria-hidden="true">4.3.</strong> Routing</a></li><li><ol class="section"><li><a href="layers/routing/pastry.html"><strong aria-hidden="true">4.3.1.</strong> Pastry</a></li></ol></li><li><a href="layers/security/index.html"><strong aria-hidden="true">4.4.</strong> Security</a></li><li><a href="layers/community/index.html"><strong aria-hidden="true">4.5.</strong> Community</a></li><li><ol class="section"><li><a href="layers/community/system.html"><strong aria-hidden="true">4.5.1.</strong> System</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">IPv8 Documentation</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#trust" id="trust">Trust</a></h1>
+<p>Trust in a distributed network has been proven to be a difficult challenge.
+structured p2p networks like DHT's use a high level of trust,
+making them vulnerable to a range of attacks.
+Distnet tries to defend against these attacks by using a routing algorithm derrived from SPROUT and Pastry.
+It uses a web of trust defined by the overlay to create a routing table for that overlay.
+While there is a global network spanning all nodes which can be used as a fallback,
+the routing table for that overlay is used till the node cannot forward the message any better.
+When that happens the global network takes care of the last mile using tratitional Pastery.</p>
+<p>In this network trust is defined by a number between -1 and 1 (inclusive).
+Every node starts of with a neutral trust of 0.
+An overlay can use it's own algorithm to register a new trust value for a node.
+For example a social network can use the trust value to indicate the relationship between two identities.
+If two identities have a close relation the overlay might set the trust to 0.9,
+but if they barely know each other it might give a rating of 0.2.
+A negative rating is also possible,
+if this is given the node tries to avoid this node,
+and never connects to it directly.</p>
+<h2><a class="header" href="#building-the-trust-graph" id="building-the-trust-graph">Building the trust graph</a></h2>
+<p>The trust of a node is stored in the Trustchain,
+of which the starting node has a local copy of from the last time it connected to the network.
+It will use this to build the trust graphs of all of the overlays as well as an aggregated one, which combines all the overlays into one.
+This aggregated one is used when creating the globally linked network.</p>
+<p>When building the trust graph for a overlay it first reads out all ratings given to nodes.
+Negative ratings are ignored here.
+If the rating is higher than a treshhold (let's say 0.6),
+then the process is repeated but for that node.
+So it reads out the trustchain for that node,
+and get's the trust.
+That trust is multiplied by the trust of the origional node,
+giving the relative trust of the new node.
+This is then added to the list of nodes.</p>
+<p>A quick example:</p>
+<pre><code>Node A tries to connect to the network.
+It finds node B in it's trust graph, with a trust rating of `0.7`.
+Node A explores the Trustchain of node B, finding a new node C with a rating of 0.4.
+The ratings of node B and C are multiplied, giving the relative rating of 0.28 for C from A.
+If node C already existed in the graph of node A then the trusts are added together.
+So if node A had a trust of 0.3 for node C, then the new trust will be 0.58.
+</code></pre>
+<p>To build the aggregated graph it simply combines all graphs,
+with adding the different trusts together.
+If a collision occures the trust values are added together,
+giving that node a higher incentive to be connected to.</p>
+<h2><a class="header" href="#building-the-routing-table" id="building-the-routing-table">Building the routing table</a></h2>
+<p>When a node starts up it will connect to a boostrap node and do the boostrapping procedure as notmal with Pastery.
+In the procedure it tries to connect to a few of the most trusted nodes as defined in the trust graph.
+This is used to build the routing table.
+While the is going on it tries to swap out any random nodes with nodes with a higher trust rating.
+This would create</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="security.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="layers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="security.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="layers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Transmission - IPv8 Documentation</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation to create your own implementation of IPv8.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li><a href="../../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><a href="../../security.html"><strong aria-hidden="true">2.</strong> Security</a></li><li><a href="../../trust.html"><strong aria-hidden="true">3.</strong> Trust</a></li><li><a href="../../layers.html"><strong aria-hidden="true">4.</strong> Layers</a></li><li><ol class="section"><li><a href="../../layers/transmission/index.html" class="active"><strong aria-hidden="true">4.1.</strong> Transmission</a></li><li><a href="../../layers/verification/index.html"><strong aria-hidden="true">4.2.</strong> Verification</a></li><li><a href="../../layers/routing/index.html"><strong aria-hidden="true">4.3.</strong> Routing</a></li><li><ol class="section"><li><a href="../../layers/routing/pastry.html"><strong aria-hidden="true">4.3.1.</strong> Pastry</a></li></ol></li><li><a href="../../layers/security/index.html"><strong aria-hidden="true">4.4.</strong> Security</a></li><li><a href="../../layers/community/index.html"><strong aria-hidden="true">4.5.</strong> Community</a></li><li><ol class="section"><li><a href="../../layers/community/system.html"><strong aria-hidden="true">4.5.1.</strong> System</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">IPv8 Documentation</h1>
+
+                        <div class="right-buttons">
+                            <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#transmission-layer" id="transmission-layer">Transmission layer</a></h1>
+<p>This layer is responsible for the connection between two directly connected nodes.
+It has no knowledge of the global state and lives directly above the choosen transport layer.
+It deals with the different types of packets.</p>
+<p>Permanent
+type
+receiver</p>
+<h2><a class="header" href="#packet-types" id="packet-types">Packet types</a></h2>
+<p>There are a few different types of packets, to make sure it arrives at the right spot.</p>
+<ul>
+<li>Send</li>
+<li>Ack</li>
+</ul>
+<p>The send packet is used to transmit a packet directly between two nodes.
+The ack packet is used to acknowledge the receiving of the packed, identified by the sequence ID.
+If the ack packet is not received after a certain timeout the sender should resend the packet.
+If after <code>x</code> amount of tries it still does not respond the node should be marked as failed.
+The packet should be rerouted trough a different node if possible, if not drop the packet.
+A higher layer will do a retransmittion of the packet starting from the source.</p>
+<h2><a class="header" href="#packet-format" id="packet-format">Packet format</a></h2>
+<p>This section describes the format of packets to be send over the network.
+It does not specify the format of the content of the packets, but the metadata of the packets.
+This metadata is used in routing the packets around.</p>
+<p>It contains the following parts:</p>
+<ul>
+<li>magic byte (4 byte, <code>0x20f57c03</code>)</li>
+<li>sequence ID (2 bit)</li>
+<li>reserved (3 bit)</li>
+<li>data length (2 byte)</li>
+<li>data (x byte)</li>
+<li>signature (8 byte, ED25519)</li>
+</ul>
+<p>SYN/ACK?</p>
+<pre><code>| 4 bytes    | 4 bits  | 4 bits |
++------------+---------+--------+
+| Magic byte | Flags   | TTL    |
++------------+---------+--------+
+</code></pre>
+<h2><a class="header" href="#magic-byte" id="magic-byte">Magic byte</a></h2>
+<p>This magic byte is four bytes long, always set to <code>0x20f57c03</code>.
+Any packet which don't start with this magic byte can safely be ignored, as this would be a different protocol.
+It is added to makes sure you are dealing with an IPv8 packet, instead of something else (non-malicious).</p>
+<h2><a class="header" href="#flags" id="flags">Flags</a></h2>
+<p>The first meaningfull part of a packet are the flags.
+Flags are a single bit datatype where <code>1</code> equals <code>true</code> and <code>0</code> equals <code>false</code>.
+These flags help with parsing the packet, as not all packet have the same format.
+In total there are 4 flags, but not all of them are in use.
+Flags are processed as they come in, so the left most flag is flag 0.</p>
+<pre><code>| Flag ID | Name                    |
+| ------- | ----------------------- |
+| 0       | Real time               |
+| 1       | Reserved for futher use |
+| 2       | Reserved for futher use |
+| 3       | Reserved for futher use |
+</code></pre>
+<h3><a class="header" href="#real-time" id="real-time">Real time</a></h3>
+<p>If the packet is real time</p>
+<h2><a class="header" href="#underlying-transport" id="underlying-transport">Underlying transport</a></h2>
+<p>While UDP is recommended for this network, it is not limited to it.
+If you want you can also use other transport protocols like TCP, TLS, WS and any other type of socket connection.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../layers.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../layers/verification/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../../layers.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../../layers/verification/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        <script src="../../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

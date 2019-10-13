@@ -1,0 +1,419 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>IPv8 Documentation</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation to create your own implementation of IPv8.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><a href="security.html"><strong aria-hidden="true">2.</strong> Security</a></li><li><a href="trust.html"><strong aria-hidden="true">3.</strong> Trust</a></li><li><a href="layers.html"><strong aria-hidden="true">4.</strong> Layers</a></li><li><ol class="section"><li><a href="layers/transmission/index.html"><strong aria-hidden="true">4.1.</strong> Transmission</a></li><li><a href="layers/verification/index.html"><strong aria-hidden="true">4.2.</strong> Verification</a></li><li><a href="layers/routing/index.html"><strong aria-hidden="true">4.3.</strong> Routing</a></li><li><ol class="section"><li><a href="layers/routing/pastry.html"><strong aria-hidden="true">4.3.1.</strong> Pastry</a></li></ol></li><li><a href="layers/security/index.html"><strong aria-hidden="true">4.4.</strong> Security</a></li><li><a href="layers/community/index.html"><strong aria-hidden="true">4.5.</strong> Community</a></li><li><ol class="section"><li><a href="layers/community/system.html"><strong aria-hidden="true">4.5.1.</strong> System</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">IPv8 Documentation</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#ipv8-documentation" id="ipv8-documentation">IPv8 documentation</a></h1>
+<h2><a class="header" href="#abstraction" id="abstraction">Abstraction</a></h2>
+<p>This book is made to explain the protocol behind the IPv8 application and protocol.
+This protocol aims to fulfill a few key goals, namely:</p>
+<ul>
+<li>Unordered and connection oriented, but reliable transmission</li>
+<li>Message authenticity</li>
+<li>Message encryption</li>
+<li>Low hop count</li>
+<li>Protection against falsified node ID's</li>
+<li>Self repairing in case of node failure</li>
+<li>Almost guaranteed message delivery</li>
+<li>Protection against malicious nodes</li>
+<li>Offline message delivery</li>
+<li>Route locality</li>
+<li>Low redundant messages being send out</li>
+<li>Rate limiting/flood protection for (D)DOS protection</li>
+</ul>
+<h1><a class="header" href="#security" id="security">Security</a></h1>
+<p>This system is designed to be secure.
+It uses a DHT routing system under the hood, which historically has a lot of issues.
+There are a few key points of security this is trying to solve.
+These will be discussed in this page.</p>
+<h2><a class="header" href="#confidentiality" id="confidentiality">Confidentiality</a></h2>
+<p>The system uses symmetric encryption to ensure confidentiality of the messages passed trough the network.
+The key for this is shared during a handshake, if either of the two wants to set up a secured connetion.
+This ensures complete confidentiality between two nodes.
+More information about the implementation can be found on the <a href="./layers/security/index.html">security</a> layer.</p>
+<h2><a class="header" href="#integrity" id="integrity">Integrity</a></h2>
+<p>This ensures that the data has not been manipulated.
+It is guaranteed by the <a href="./layers/verification/index.html">verification</a> layer.
+This page will go into more detail of the exact implementation,
+but the more important</p>
+<h2><a class="header" href="#availability" id="availability">Availability</a></h2>
+<p>This was the hardest problem to solve,
+as there is no sure way to verify if a packet is intentionally dropped,
+or that the node is not online.</p>
+<p>A few of the implemented defenses:</p>
+<ul>
+<li>Difficult hashing of the public key to reduce the amount of new public keys.</li>
+<li>Periodic proof-of-work requests to limit the number of clients per node.</li>
+<li>Dropping of nodes with a high packet loss rate.</li>
+</ul>
+<p>While these defenses don't prevent all attacks on the availability of the network,
+it should reduce the amount and scale of most attacks.
+You can find more information on the implementation on the <a href="./layers/routing/index.html">routing</a> page.</p>
+<h1><a class="header" href="#trust" id="trust">Trust</a></h1>
+<p>Trust in a distributed network has been proven to be a difficult challenge.
+structured p2p networks like DHT's use a high level of trust,
+making them vulnerable to a range of attacks.
+Distnet tries to defend against these attacks by using a routing algorithm derrived from SPROUT and Pastry.
+It uses a web of trust defined by the overlay to create a routing table for that overlay.
+While there is a global network spanning all nodes which can be used as a fallback,
+the routing table for that overlay is used till the node cannot forward the message any better.
+When that happens the global network takes care of the last mile using tratitional Pastery.</p>
+<p>In this network trust is defined by a number between -1 and 1 (inclusive).
+Every node starts of with a neutral trust of 0.
+An overlay can use it's own algorithm to register a new trust value for a node.
+For example a social network can use the trust value to indicate the relationship between two identities.
+If two identities have a close relation the overlay might set the trust to 0.9,
+but if they barely know each other it might give a rating of 0.2.
+A negative rating is also possible,
+if this is given the node tries to avoid this node,
+and never connects to it directly.</p>
+<h2><a class="header" href="#building-the-trust-graph" id="building-the-trust-graph">Building the trust graph</a></h2>
+<p>The trust of a node is stored in the Trustchain,
+of which the starting node has a local copy of from the last time it connected to the network.
+It will use this to build the trust graphs of all of the overlays as well as an aggregated one, which combines all the overlays into one.
+This aggregated one is used when creating the globally linked network.</p>
+<p>When building the trust graph for a overlay it first reads out all ratings given to nodes.
+Negative ratings are ignored here.
+If the rating is higher than a treshhold (let's say 0.6),
+then the process is repeated but for that node.
+So it reads out the trustchain for that node,
+and get's the trust.
+That trust is multiplied by the trust of the origional node,
+giving the relative trust of the new node.
+This is then added to the list of nodes.</p>
+<p>A quick example:</p>
+<pre><code>Node A tries to connect to the network.
+It finds node B in it's trust graph, with a trust rating of `0.7`.
+Node A explores the Trustchain of node B, finding a new node C with a rating of 0.4.
+The ratings of node B and C are multiplied, giving the relative rating of 0.28 for C from A.
+If node C already existed in the graph of node A then the trusts are added together.
+So if node A had a trust of 0.3 for node C, then the new trust will be 0.58.
+</code></pre>
+<p>To build the aggregated graph it simply combines all graphs,
+with adding the different trusts together.
+If a collision occures the trust values are added together,
+giving that node a higher incentive to be connected to.</p>
+<h2><a class="header" href="#building-the-routing-table" id="building-the-routing-table">Building the routing table</a></h2>
+<p>When a node starts up it will connect to a boostrap node and do the boostrapping procedure as notmal with Pastery.
+In the procedure it tries to connect to a few of the most trusted nodes as defined in the trust graph.
+This is used to build the routing table.
+While the is going on it tries to swap out any random nodes with nodes with a higher trust rating.
+This would create</p>
+<h1><a class="header" href="#layering" id="layering">Layering</a></h1>
+<p>The protocol is set up in a layered fasion,
+where every layer should be independent of the other.
+This is done to simplify the model and create a seperation of concerns.
+A simplified table is displayed below:</p>
+<pre><code>+---+-----------------+
+| 5 | Community       |
++---+-----------------+
+| 4 | Security        |
++---+-----------------+
+| 3 | Routing         |
++---+-----------------+
+| 2 | Verification    |
++---+-----------------+
+| 1 | Transmission    |
++---+-----------------+
+</code></pre>
+<p>Every part will be explained separately in different chapters from low to high.</p>
+<h1><a class="header" href="#transmission-layer" id="transmission-layer">Transmission layer</a></h1>
+<p>This layer is responsible for the connection between two directly connected nodes.
+It has no knowledge of the global state and lives directly above the choosen transport layer.
+It deals with the different types of packets.</p>
+<p>Permanent
+type
+receiver</p>
+<h2><a class="header" href="#packet-types" id="packet-types">Packet types</a></h2>
+<p>There are a few different types of packets, to make sure it arrives at the right spot.</p>
+<ul>
+<li>Send</li>
+<li>Ack</li>
+</ul>
+<p>The send packet is used to transmit a packet directly between two nodes.
+The ack packet is used to acknowledge the receiving of the packed, identified by the sequence ID.
+If the ack packet is not received after a certain timeout the sender should resend the packet.
+If after <code>x</code> amount of tries it still does not respond the node should be marked as failed.
+The packet should be rerouted trough a different node if possible, if not drop the packet.
+A higher layer will do a retransmittion of the packet starting from the source.</p>
+<h2><a class="header" href="#packet-format" id="packet-format">Packet format</a></h2>
+<p>This section describes the format of packets to be send over the network.
+It does not specify the format of the content of the packets, but the metadata of the packets.
+This metadata is used in routing the packets around.</p>
+<p>It contains the following parts:</p>
+<ul>
+<li>magic byte (4 byte, <code>0x20f57c03</code>)</li>
+<li>sequence ID (2 bit)</li>
+<li>reserved (3 bit)</li>
+<li>data length (2 byte)</li>
+<li>data (x byte)</li>
+<li>signature (8 byte, ED25519)</li>
+</ul>
+<p>SYN/ACK?</p>
+<pre><code>| 4 bytes    | 4 bits  | 4 bits |
++------------+---------+--------+
+| Magic byte | Flags   | TTL    |
++------------+---------+--------+
+</code></pre>
+<h2><a class="header" href="#magic-byte" id="magic-byte">Magic byte</a></h2>
+<p>This magic byte is four bytes long, always set to <code>0x20f57c03</code>.
+Any packet which don't start with this magic byte can safely be ignored, as this would be a different protocol.
+It is added to makes sure you are dealing with an IPv8 packet, instead of something else (non-malicious).</p>
+<h2><a class="header" href="#flags" id="flags">Flags</a></h2>
+<p>The first meaningfull part of a packet are the flags.
+Flags are a single bit datatype where <code>1</code> equals <code>true</code> and <code>0</code> equals <code>false</code>.
+These flags help with parsing the packet, as not all packet have the same format.
+In total there are 4 flags, but not all of them are in use.
+Flags are processed as they come in, so the left most flag is flag 0.</p>
+<pre><code>| Flag ID | Name                    |
+| ------- | ----------------------- |
+| 0       | Real time               |
+| 1       | Reserved for futher use |
+| 2       | Reserved for futher use |
+| 3       | Reserved for futher use |
+</code></pre>
+<h3><a class="header" href="#real-time" id="real-time">Real time</a></h3>
+<p>If the packet is real time</p>
+<h2><a class="header" href="#underlying-transport" id="underlying-transport">Underlying transport</a></h2>
+<p>While UDP is recommended for this network, it is not limited to it.
+If you want you can also use other transport protocols like TCP, TLS, WS and any other type of socket connection.</p>
+<h1><a class="header" href="#verification" id="verification">Verification</a></h1>
+<p>The verification layer is to make sure the message is send from where</p>
+<p>// TODO</p>
+<p>Signed
+Lamport clock?</p>
+<h1><a class="header" href="#routing" id="routing">Routing</a></h1>
+<p>The routing layer is the first layer which is aware of nodes not directly attached.
+It makes use of the Pastry routing protocol, as defined in <a href="layers/routing/./pastry.html">this page</a>.
+This page defines the way the pastry routing is applied</p>
+<p>// TODO</p>
+<p>Store-and-forward
+Permanent messages
+Expiration
+Route table rotation</p>
+<h1><a class="header" href="#pastry" id="pastry">Pastry</a></h1>
+<p>Routing is done by the pastry.
+The paper for this is located <a href="https://www.freepastry.org/PAST/pastry.pdf">here</a>.</p>
+<p>The rest of this page is to be done.</p>
+<h1><a class="header" href="#security-1" id="security-1">Security</a></h1>
+<p>This layer makes it able to encrypt any traffic above this layer.</p>
+<p>// TODO</p>
+<h1><a class="header" href="#community" id="community">Community</a></h1>
+<p>This layer is specific to the communities.
+It will route the communities and the messages.</p>
+<p>// TODO</p>
+<p>communityid (2 byte)
+messageid (1 byte)
+Authenticated communities?</p>
+<h1><a class="header" href="#system-community" id="system-community">System community</a></h1>
+<p>This is the community responsibe for the general housekeeping of the network.
+It is responsible for the introduction requests and route discovery.</p>
+<p>// TODO</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
